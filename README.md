@@ -1,2 +1,4 @@
-# earlathos.github.io
- CatsMath
+# CatsMath
+
+Репозиторий для игры КотиМатика
+ 
