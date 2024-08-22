@@ -1,7 +1,44 @@
+html
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Model Viewer</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
 <body>
-<h1>КотиМатика</h1>
-<p>Играйте в КотиМатику!</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        // Создание сцены, камеры и рендерера
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Загрузка 3D модели
+        const loader = new THREE.GLTFLoader();
+        loader.load('House_001_GLB.glb', function (gltf) {
+            scene.add(gltf.scene);
+        });
+
+        // Освещение
+        const light = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(light);
+
+        // Позиция камеры
+        camera.position.z = 5;
+
+        // Анимация
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
