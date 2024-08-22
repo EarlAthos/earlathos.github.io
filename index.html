@@ -3,7 +3,7 @@ html
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>3D Model Viewer</title>
+    <title>Earl_Athos_3D Model Viewer</title>
     <style>
         body { margin: 0; }
         canvas { display: block; }
@@ -13,17 +13,21 @@ html
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-        // Создание сцены, камеры и рендерера
+        // Инициализация сцены, камеры и рендерера
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Загрузка 3D модели
+        // Создание загрузчика GLTF
         const loader = new THREE.GLTFLoader();
+
+        // Загрузка 3D модели
         loader.load('House_001_GLB.glb', function (gltf) {
             scene.add(gltf.scene);
+        }, undefined, function (error) {
+            console.error(error);
         });
 
         // Освещение
