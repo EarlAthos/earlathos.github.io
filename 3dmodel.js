@@ -12,7 +12,6 @@ document.body.appendChild(renderer.domElement);
 
 // Создание загрузчика GLTF
 const loader = new THREE.GLTFLoader();
-
 // Загрузка 3D модели (замените model.glb на фактическое имя вашего файла)
 loader.load('House_001_GLB.glb', function (gltf) {
     scene.add(gltf.scene);
